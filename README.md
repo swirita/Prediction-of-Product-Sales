@@ -49,3 +49,24 @@ Fruits and Vegetables and Snack Foods are the most common item categories, while
 ### Insight:
 
 Fruits and Vegetables and Snack Foods are the most common item categories, while Seafood and Breakfast items appear least frequently.
+
+## Model Information
+
+This project uses a **Random Forest Regressor** to predict **Item Outlet Sales**. The model was optimized using **GridSearchCV** with 3-fold cross-validation to find the best combination of hyperparameters.
+
+### Feature Engineering
+
+Several preprocessing and feature engineering steps were applied before training:
+
+* Created **`Outlet_Age`** from `Outlet_Establishment_Year`.
+* Extracted **`Item_Category`** from `Item_Identifier`.
+* Labeled non-consumable (`NC`) items as **`Non-Edible`** in `Item_Fat_Content`.
+* Grouped `Item_MRP` into **Low**, **Medium**, and **High** price categories.
+* Standardized inconsistent `Item_Fat_Content` values (e.g., `LF` → `Low Fat`, `reg` → `Regular`).
+* Removed identifier columns (`Item_Identifier` and `Outlet_Identifier`) since they do not provide predictive value.
+
+### Model Performance
+
+The tuned model achieved an **R² score of 0.602** on the test set, indicating that it explains about **60.2% of the variation** in outlet sales. The training and testing scores are very similar, suggesting that the model generalizes well and does not suffer from significant overfitting.
+
+While there is room for further improvement, the current model provides stable and reliable predictions for this dataset.
