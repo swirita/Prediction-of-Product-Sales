@@ -1,72 +1,49 @@
-# Prediction-of-Product-Sales
+# Prediction of Product Sales
 
-## Project Overview
+**Author**: Siwar Ehwass
 
-This project explores Product Sales dataset to better understand the factors that affect item sales across different outlets.
-The analysis includes data exploration and visualization of numerical and categorical features to identify trends, patterns, and possible relationships between variables.
+### Business problem:
+Outlets want to know what affects their sales so they can plan things like inventory and pricing better. This project tries to predict how much a product will sell at an Outlet, based on things like the product's MRP and the type of store. The goal is to help the business understand what factors matter most for sales.
 
-The project uses:
+### Data:
+The dataset has past sales records for products sold at different stores. Each row shows one product's sales at one store, along with info about the product (like price) and the store (like its type and size).
 
-* Python
-* Pandas
-* Matplotlib
-* Seaborn
+## Methods
+- Cleaned the data to fix missing or incorrect values, so the results are based on accurate information.
+- Looked at how different features (like price and store type) relate to sales, to see which ones matter most.
+- Built two models — Linear Regression and Random Forest — to predict sales, and compared them to see which one works better.
+- Tested both models on data they hadn't seen before, to make sure they actually learned useful patterns instead of just memorizing the training data.
 
----
+## Results
 
-# Key Visuals & Insights
+#### Visual 1: Outlet Type vs Item Outlet Sales
+![Outlet Type vs Sales](outlet_type_vs_sales.png)
+> Supermarket Type3 stores have the highest average sales by far, while Grocery Stores have the lowest. This shows that the type of store has a big effect on sales.
 
-## 1. Histogram of Item_Outlet_Sales
-<img width="571" height="455" alt="image" src="https://github.com/user-attachments/assets/a1c0ed87-b3c9-483f-b26e-d8e6e6b46912" />
+#### Visual 2: Maximum Retail Price vs Item Outlet Sales
+![MRP vs Sales](mrp_vs_sales.png)
+> As an item's price goes up, its sales tend to go up too. This makes sense and shows that price is an important factor in predicting sales.
 
-### Insight:
+## Model
+The final model chosen is a **Random Forest Regressor**, because it performed better than Linear Regression.
 
-Most items have relatively low sales, while a small number of items have very high sales, creating a right-skewed distribution.
+#### Visual 3: Train vs Test R² Scores
+![Train vs Test R2](train_vs_test_r2.png)
+> Random Forest scored 0.60 on test data, compared to 0.57 for Linear Regression. Both models scored almost the same on training and test data, which means neither model is overfitting (memorizing instead of learning).
 
----
+**Key results (Random Forest, Test Data):**
+- R² = 0.602
+- RMSE ≈ 1,047 sales units
 
-## 2. Correlation Heatmap
-<img width="928" height="699" alt="image" src="https://github.com/user-attachments/assets/42d0440a-931a-4bf4-96cd-b6c1a879dceb" />
+This means the model can explain about 60% of why sales go up or down, using the info we have. On average, its predictions are off by about 1,047 sales units. So the model is a useful guide for planning, but it won't be exact every time.
 
-### Insight:
+## Recommendations:
+- Use the Random Forest model for sales predictions, since it works better than the simpler Linear Regression model.
+- Pay attention to store type and item price, since both clearly affect sales — for example, bigger stores (Supermarket Type3) tend to sell a lot more.
+- Treat the model's predictions as a helpful estimate, not a perfect answer, since it only explains about 60% of the differences in sales.
 
-Maximum Retail Price showed one of the strongest positive relationships with Item_Outlet_Sales, suggesting that higher-priced items tend to generate higher sales.
+## Limitations & Next Steps
+The model doesn't account for things like seasonality, promotions, or local demand, which could explain some of the sales it can't predict. Next steps could include adding more features (like time of year or marketing data), trying other models, and testing on newer data to make sure it still works well over time.
 
-## 3. Regression Plot: Maximum Retail Price vs Item Outlet Sales
-<img width="558" height="393" alt="image" src="https://github.com/user-attachments/assets/6a75d8c0-35af-4882-9ae0-d8f8b9bacdd6" />
-
-### Insight:
-
-Items with higher retail prices tend to have higher outlet sales, showing a positive relationship between price and sales.
-
-## 4. Countplot of Item Type
-<img width="859" height="550" alt="image" src="https://github.com/user-attachments/assets/360cb170-eb34-4c0a-a88a-ce767ac05d61" />
-
-### Insight:
-
-Fruits and Vegetables and Snack Foods are the most common item categories, while Seafood and Breakfast items appear least frequently.
-
-### Insight:
-
-Fruits and Vegetables and Snack Foods are the most common item categories, while Seafood and Breakfast items appear least frequently.
-
-## Model Information
-
-This project uses a **Random Forest Regressor** to predict **Item Outlet Sales**. The model was optimized using **GridSearchCV** with 3-fold cross-validation to find the best combination of hyperparameters.
-
-### Feature Engineering
-
-Several preprocessing and feature engineering steps were applied before training:
-
-* Created **`Outlet_Age`** from `Outlet_Establishment_Year`.
-* Extracted **`Item_Category`** from `Item_Identifier`.
-* Labeled non-consumable (`NC`) items as **`Non-Edible`** in `Item_Fat_Content`.
-* Grouped `Item_MRP` into **Low**, **Medium**, and **High** price categories.
-* Standardized inconsistent `Item_Fat_Content` values (e.g., `LF` → `Low Fat`, `reg` → `Regular`).
-* Removed identifier columns (`Item_Identifier` and `Outlet_Identifier`) since they do not provide predictive value.
-
-### Model Performance
-
-The tuned model achieved an **R² score of 0.602** on the test set, indicating that it explains about **60.2% of the variation** in outlet sales. The training and testing scores are very similar, suggesting that the model generalizes well and does not suffer from significant overfitting.
-
-While there is room for further improvement, the current model provides stable and reliable predictions for this dataset.
+### For further information
+For any additional questions, please contact **siwarehwass@gmail.com**
