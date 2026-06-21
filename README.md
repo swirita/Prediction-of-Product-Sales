@@ -17,18 +17,18 @@ The dataset has past sales records for products sold at different stores. Each r
 ## Results
 
 #### Visual 1: Outlet Type vs Item Outlet Sales
-![Outlet Type vs Sales](outlet_type_vs_sales.png)
+![Outlet Type vs Sales](visuals/outlet_type_vs_sales.png)
 > Supermarket Type3 stores have the highest average sales by far, while Grocery Stores have the lowest. This shows that the type of store has a big effect on sales.
 
 #### Visual 2: Maximum Retail Price vs Item Outlet Sales
-![MRP vs Sales](mrp_vs_sales.png)
+![MRP vs Sales](visuals/mrp_vs_sales.png)
 > As an item's price goes up, its sales tend to go up too. This makes sense and shows that price is an important factor in predicting sales.
 
 ## Model
 The final model chosen is a **Random Forest Regressor**, because it performed better than Linear Regression.
 
 #### Visual 3: Train vs Test R² Scores
-![Train vs Test R2](train_vs_test_r2.png)
+![Train vs Test R2](visuals/train_vs_test_r2.png)
 > Random Forest scored 0.60 on test data, compared to 0.57 for Linear Regression. Both models scored almost the same on training and test data, which means neither model is overfitting (memorizing instead of learning).
 
 **Key results (Random Forest, Test Data):**
