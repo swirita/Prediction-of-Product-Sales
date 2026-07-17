@@ -37,6 +37,34 @@ The final model chosen is a **Random Forest Regressor**, because it performed be
 
 This means the model can explain about 60% of why sales go up or down, using the info we have. On average, its predictions are off by about 1,047 sales units. So the model is a useful guide for planning, but it won't be exact every time.
 
+#### Visual 4: Linear Regression - Top 5 Coefficients
+
+![Linear Regression Coefficients](visuals/linreg_coeff.png)
+
+> A closer look at just the 5 largest coefficients by magnitude.
+>
+> **Top 3 Most Impactful Features (Linear Regression)**
+>
+> 1. **`Outlet_Type_Supermarket Type3`** (+3,300) — Selling in a Supermarket Type3 store adds about 3,300 sales units compared to a Grocery Store. Biggest driver by far.
+> 2. **`Outlet_Type_Supermarket Type1`** (+1,950) — Supermarket Type1 stores add about 1,950 sales units compared to a Grocery Store.
+> 3. **`Outlet_Type_Supermarket Type2`** (+1,600) — Supermarket Type2 stores add about 1,600 sales units compared to a Grocery Store.
+>
+> **In simple words:** the type of store a product is sold in matters more than anything else in this model — more than price, product type, or fat content. Selling through a supermarket instead of a grocery store is the single best thing for sales.
+
+#### Visual 5: Random Forest Feature Importances
+
+![Random Forest Feature Importances](visuals/feature_importance.png)
+
+> **Top 5 Most Important Features (Random Forest)**
+>
+> 1. **`Item_MRP`** (~0.55) — Price is by far the biggest factor. The model relies on this feature more than all others combined.
+> 2. **`Outlet_Type_Supermarket Type3`** (~0.18) — Whether a product is sold in a Supermarket Type3 store matters a lot.
+> 3. **`Outlet_Type_Supermarket Type1`** (~0.15) — Selling through a Supermarket Type1 store is also a strong signal.
+> 4. **`Outlet_Size`** (~0.06) — The size of the store (Small, Medium, High) has a small but real effect.
+> 5. **`Outlet_Type_Supermarket Type2`** (~0.05) — Supermarket Type2 stores add a little more predictive power.
+>
+> **In simple words:** price drives most of the prediction, and store type/size fill in the rest. Everything else — item category, fat content, visibility — barely matters to this model.
+
 ## Recommendations:
 - Use the Random Forest model for sales predictions, since it works better than the simpler Linear Regression model.
 - Pay attention to store type and item price, since both clearly affect sales — for example, bigger stores (Supermarket Type3) tend to sell a lot more.
