@@ -14,7 +14,7 @@ The dataset has past sales records for products sold at different stores. Each r
 - Built two models — Linear Regression and Random Forest — to predict sales, and compared them to see which one works better.
 - Tested both models on data they hadn't seen before, to make sure they actually learned useful patterns instead of just memorizing the training data.
 
-## Results
+## Results 
 
 #### Visual 1: Outlet Type vs Item Outlet Sales
 ![Outlet Type vs Sales](visuals/outlet_type_vs_sales.png)
